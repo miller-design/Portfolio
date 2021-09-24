@@ -1,0 +1,62 @@
+// type style utility classes
+@mixin roboto($weight) {
+	font-family: $roboto;
+	font-style: normal;
+
+	@if $weight == 'light' {
+		font-weight: 300;
+	} @else if $weight == 'regular' {
+		font-weight: 400;
+	} @else if $weight == 'medium' {
+		font-weight: 500;
+	} @else if $weight == 'bold' {
+		font-weight: 700;
+	}
+}
+
+// type class mixins
+@mixin H1($weight: 'regular') {
+
+	@include v-type(60px, 120px, 120px);
+	@include tracking(-20);
+	@include roboto($weight);
+}
+
+@mixin H2($weight: 'regular') {
+
+	@include v-type(50px, 80px, 80px);
+	@include tracking(-20);
+	@include roboto($weight);
+}
+
+@mixin H3($weight: 'regular') {
+
+	@include v-type(40px, 60px, 65px);
+	@include tracking(-20);
+	@include roboto($weight);
+}
+
+@mixin H4($weight: 'regular') {
+
+	@include v-type(20px, 40px, 40px);
+	@include tracking(-20);
+	@include roboto($weight);
+}
+
+@mixin P1($weight: 'regular') {
+
+	@include v-type(20px, 30px, 38px);
+	@include tracking(-20);
+	@include roboto($weight);
+}
+
+// classes
+.t-header-50-80 {
+
+	@include H2;
+}
+
+.t-header-40-60 {
+
+	@include H3;
+}

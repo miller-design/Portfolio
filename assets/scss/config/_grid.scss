@@ -1,0 +1,57 @@
+// Grid Mixins
+
+@mixin grid-container($inner: false) {
+	display: block;
+
+	.ie-11 & {
+
+		@if $inner == false {
+			padding-left: var(--site-margin);
+			padding-right: var(--site-margin);
+		}
+	}
+
+	@supports (display: grid) {
+		display: -ms-grid;
+		display: grid;
+		grid-template-columns: repeat(var(--site-cols), 1fr);
+		column-gap: var(--site-gutter);
+		box-sizing: border-box;
+
+		@if $inner == false {
+			padding-left: var(--site-margin);
+			padding-right: var(--site-margin);
+		}
+	}
+}
+
+@mixin grid-col($col-start, $col-end) {
+
+	@if $col-start == "span" {
+		grid-column: $col-start $col-end;
+	} @else {
+		-ms-grid-column: $col-start;
+		-ms-grid-column-span: $col-end - $col-start;
+		grid-column: #{$col-start} / #{$col-end};
+	}
+}
+
+@mixin grid-col-full-bleed($direction: "left") {
+	position: relative;
+	grid-column: 1 / -1;
+	width: calc(100% + #{var(--site-margin)});
+
+	@if ($direction == "left") {
+		left: calc(#{var(--site-margin)} * -1);
+	}
+
+	@if ($direction == "right") {
+		// right: calc(#{var(--site-margin)} * -1);
+		right: 0;
+	}
+
+	@if ($direction == "both") {
+		left: calc(#{var(--site-margin)} * -1);
+		width: calc(100% + (#{var(--site-margin)} * 2));
+	}
+}

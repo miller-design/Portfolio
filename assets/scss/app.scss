@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+@import "../../node_modules/include-media/dist/_include-media.scss";
+@import "config/reset";
+@import "config/variables";
+@import "config/mixins";
+@import "config/utils";
+@import "config/type";
+@import "config/grid";
+
+@import "layout/l-ContactList";
+
+
+:root {
+
+	@each $breakpoint-key, $breakpoint-var in $breakpoints {
+
+		@include site-get-var-loop("#{$breakpoint-key}");
+	}
+
+	/* @link https://utopia.fyi/type/calculator?c=320,50,1.067,1900,150,1.067,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+	--type-scale: clamp(3.13rem, 1.86rem + 6.33vw, 9.38rem);
+}
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	cursor: none;
+}
+
+body {
+	background-color: $c-off-white;
+	transition: 400ms background-color $standard-curve;
+
+	html.dark-theme & {
+		background-color: $c-black;
+	}
+}

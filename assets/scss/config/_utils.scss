@@ -1,0 +1,13 @@
+.u-faded-text {
+	opacity: 0.7;
+	transition: 400ms opacity $standard-curve;
+
+	@include hover {
+		opacity: 1;
+	}
+}
+
+.u-text-link {
+	color: inherit;
+	text-decoration: none;
+}
