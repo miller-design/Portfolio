@@ -2,7 +2,9 @@
   <div class="[ c-TimeLine ]">
 		<div class="[ c-TimeLine__left ]">
 			<div class="[ c-TimeLine__bar ]"></div>
-			<span class="[ c-TimeLine__dot ]"></span>
+			<div class="[ c-TimeLine__dot-wrap ]">
+				<span class="[ c-TimeLine__dot ]"></span>
+			</div>
 		</div>
 		<div class="[ c-TimeLine__right ]">
 			<div class="[ c-TimeLine__section ]" v-for="(section, i) in Sections" :key="i">
@@ -54,6 +56,7 @@ export default {
 .c-TimeLine__left {
 	position: relative;
 	margin-top: 15px;
+	padding-left: 20px;
 
 	@include grid-col(1, 2);
 }
@@ -70,11 +73,20 @@ export default {
 
 .c-TimeLine__bar {
 	position: absolute;
-	left: 0;
+	left: 20px;
 	top: 0;
 	width: 2px;
 	height: 100%;
 	background-color: $c-orange;
+}
+
+.c-TimeLine__dot-wrap {
+	position: sticky;
+  top: 100px;
+
+	@include media("<small") {
+		top: 80px;
+	}
 }
 
 .c-TimeLine__dot {
