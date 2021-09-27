@@ -46,7 +46,7 @@ export default {
           target: "_blank"
         },
         {
-          header: "SteinbergHart",
+          header: "Steinberg Hart",
           text: "Wordpress",
           link: "#",
           target: "_blank"

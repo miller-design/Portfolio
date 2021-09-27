@@ -51,12 +51,22 @@
 }
 
 // classes
-.t-header-50-80 {
+.t-header-40-80 {
 
 	@include H2;
+
+	@include media("<medium") {
+
+		@include v-type(40px, 80px, 80px);
+	}
 }
 
-.t-header-40-60 {
+.t-header-30-60 {
 
 	@include H3;
+
+	@include media("<medium") {
+
+		@include v-type(30px, 60px, 65px);
+	}
 }

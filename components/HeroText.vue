@@ -104,14 +104,16 @@ export default {
 .c-HeroText__text {
 	width: 100%;
 	margin: 0;
-	padding-right: 5vw;
 	transition: 800ms color 400ms $standard-curve;
 
 	@include v-spacing(padding-top, 10px, 20px);
 	@include H3('light');
 
-	@include media(">=medium") {
+	@include media(">=small") {
+		padding-right: 5vw;
+	}
 
+	@include media(">=medium") {
 		padding-right: 10vw;
 	}
 

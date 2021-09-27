@@ -110,7 +110,12 @@ export default {
 
 		> li {
 
-			@include grid-col(span, 3);
+			@include grid-col(1, -1);
+
+			@include media(">=medium") {
+
+				@include grid-col(span, 3);
+			}
 		}
 	}
 

@@ -84,6 +84,11 @@ export default {
 		top: 3px;
 
 		@include H4("light");
+
+		@include media("<medium") {
+			display: block;
+			margin-top: 5px;
+		}
 	}
 }
 

@@ -51,12 +51,24 @@ export default {
   display: flex;
   align-items: center;
   align-content: center;
+  flex-wrap: wrap;
 }
 
 .c-NavBar__item {
 
+  @include media("<medium") {
+    width: 100%;
+  }
+
   &:not(:first-child) {
-    margin-left: 55px;
+
+    @include media("<medium") {
+      margin-top: 15px;
+    }
+
+    @include media(">=medium") {
+      margin-left: 55px;
+    }
   }
 
   > a {

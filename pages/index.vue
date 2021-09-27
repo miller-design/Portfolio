@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <HeroText header="Hey Im Jack a front-end Web developer / web designer" />
+      <HeroText header="Hey Im Jack a front-end developer / designer" />
     </div>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
   <footer class="[ c-Footer ]">
+		<SidePanelMenu />
 		<div class="[ c-Footer__col ]">
-    	<NavBar :class="[ {'c-NavBarNavigation--no-switch' : hideSwitch} ]" :addTerms="true" />
+    	<NavBar :class="[ {'c-NavBar--no-switch' : hideSwitch} ]" :addTerms="true" />
 		</div>
 		<div class="[ c-Footer__col ]">
 			<p class="[ c-Footer__copyrite ]">© {{year}} Copyright Jack Miller Design</p>
@@ -11,6 +12,7 @@
 
 <script>
 import NavBar from '~/components/NavBar.vue'
+import SidePanelMenu from '~/components/SidePanelMenu.vue'
 
 export default {
 
@@ -28,7 +30,8 @@ export default {
   },
 
   components: {
-		NavBar
+		NavBar,
+		SidePanelMenu
   },
 
 	mounted() {
@@ -46,10 +49,17 @@ export default {
   justify-content: space-between;
 	padding-left: var(--site-margin);
 	padding-right: var(--site-margin);
-	// border-top: 1px solid $c-grey;
+	flex-wrap: wrap;
 
 	@include v-spacing(padding-top, 125px, 250px);
 	@include v-spacing(padding-bottom, 20px, 40px);
+}
+
+.c-Footer__col {
+
+	@include media("<medium") {
+		width: 100%;
+	}
 }
 
 .c-Footer__copyrite {

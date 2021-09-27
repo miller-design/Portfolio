@@ -111,6 +111,10 @@ export default {
 	backface-visibility: hidden;
 	mix-blend-mode: difference;
 	transition: 600ms transform cubic-bezier(0.18,0.89,0.32,1.27);
+
+	@media (hover: none) and (pointer: coarse) {
+		display: none;
+	}
 }
 
 .c-CustomCursor--hidden {

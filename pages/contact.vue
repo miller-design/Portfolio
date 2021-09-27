@@ -6,25 +6,14 @@
     <div class="[ contact-wrapper ]">
       <div class="[ l-ContactList ]">
         <div class="[ l-ContactList__item ]">
-          <p class="[ t-header-50-80 ]">Email:</p>
+          <p class="[ t-header-40-80 ]">Email:</p>
         </div>
         <div class="[ l-ContactList__item ]">
-          <p class="[ t-header-40-60 ][ u-faded-text ]"><a href="mailto:contact@jackmiller.design?subject=Dropping You a Line"  class="[ u-text-link ]" data-cursor-hover>contact@jackmiller.design</a></p>
+          <p class="[ t-header-30-60 ][ u-faded-text ]"><a href="mailto:contact@jackmiller.design?subject=Dropping You a Line"  class="[ u-text-link ]" data-cursor-hover>contact@jackmiller.design</a></p>
         </div>
       </div>
-      <div class="[ l-ContactList ]">
-        <div class="[ l-ContactList__item ]">
-          <p class="[ t-header-50-80 ]">Social:</p>
-        </div>
-        <div class="[ l-ContactList__item ]">
-          <p class="[ t-header-40-60 ][ u-faded-text ]"><a href="#" class="[ u-text-link ]" data-cursor-hover>LinkedIn</a></p>
-        </div>
-        <div class="[ l-ContactList__item ]">
-          <p class="[ t-header-40-60 ][ u-faded-text ]"><a href="#" class="[ u-text-link ]" data-cursor-hover>Instagram</a></p>
-        </div>
-        <div class="[ l-ContactList__item ]">
-          <p class="[ t-header-40-60 ][ u-faded-text ]"><a href="#" class="[ u-text-link ]" data-cursor-hover>Github</a></p>
-        </div>
+      <div>
+        <SocialList />
       </div>
     </div>
   </div>
@@ -32,6 +21,7 @@
 
 <script>
 import HeroText from '~/components/HeroText.vue'
+import SocialList from '~/components/SocialList.vue'
 
 export default {
   computed: {
@@ -41,7 +31,8 @@ export default {
   layout: 'default',
 
   components: {
-    HeroText
+    HeroText,
+    SocialList
   }
 }
 </script>

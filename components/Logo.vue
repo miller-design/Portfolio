@@ -31,6 +31,10 @@ export default {
     width 200ms linear,
     height 200ms linear;
 
+  @include media("<medium") {
+    width: 40px;
+  }
+
   svg {
     width: 100%;
     height: 100%;

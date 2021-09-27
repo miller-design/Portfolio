@@ -5,6 +5,7 @@
     </div>
     <div class="[ c-Header__col right ]">
       <NavBar />
+      <Burger />
     </div>
   </header>
 </template>
@@ -100,16 +101,29 @@ export default {
 
   &.shrink {
 
-    @include v-spacing(padding-top, 10px, 20px);
-    @include v-spacing(padding-bottom, 10px, 20px);
+    @include media(">=medium") {
+
+      @include v-spacing(padding-top, 10px, 20px);
+      @include v-spacing(padding-bottom, 10px, 20px);
+    }
 
     .c-Logo {
-      width: 45px;
+
+      @include media(">=medium") {
+        width: 45px;
+      }
     }
   }
 
   &.hide-bar {
     transform: translateY(calc(var(--el-header-height) * -1));
+  }
+
+  .c-NavBar {
+
+    @include media("<medium") {
+      display: none;
+    }
   }
 }
 
