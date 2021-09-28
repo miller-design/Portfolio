@@ -57,6 +57,9 @@ export default {
 	position: relative;
 	margin-top: 15px;
 	padding-left: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 
 	@include grid-col(1, 2);
 }
@@ -82,10 +85,10 @@ export default {
 
 .c-TimeLine__dot-wrap {
 	position: sticky;
-  top: 100px;
+  bottom: 100px;
 
 	@include media("<small") {
-		top: 80px;
+		bottom: 80px;
 	}
 }
 
