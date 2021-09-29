@@ -41,12 +41,12 @@ export default {
 
   mounted() {
 
-    EventBus.$on('open_menu', () => {
+    EventBus.$on('open_panel', () => {
       this.menuOpen = true
       disablePageScroll(this.$el)
     })
 
-    EventBus.$on('close_menu', () => {
+    EventBus.$on('close_panel', () => {
       this.menuOpen = false
       enablePageScroll(this.$el)
     })
@@ -55,7 +55,7 @@ export default {
   methods: {
 
     closeMenu() {
-      EventBus.$emit('close_menu')
+      EventBus.$emit('close_panel')
       this.menuOpen = false
     }
   },
@@ -180,23 +180,7 @@ export default {
 }
 
 .c-SidePanelMenu__close {
-  position: absolute;
-  top: var(--site-margin);
-  right: var(--site-margin);
-  width: 20px;
-  height: 20px;
-  transform: rotate(0deg);
-	transition: transform 500ms ease;
-	cursor: none;
 
-  svg {
-    width: 100%;
-    height: 100%;
-		pointer-events: none;
-  }
-
-	@include hover {
-		transform: rotate(90deg);
-	}
+  @include close-trigger;
 }
 </style>

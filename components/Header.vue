@@ -92,6 +92,7 @@ export default {
   justify-content: space-between;
 	padding-left: var(--site-margin);
 	padding-right: var(--site-margin);
+  pointer-events: none;
   transition:
     400ms padding $standard-curve,
     400ms transform $standard-curve;
@@ -124,6 +125,12 @@ export default {
     @include media("<medium") {
       display: none;
     }
+  }
+
+  .c-Logo,
+  .c-NavBar,
+  .c-Burger {
+    pointer-events: auto;
   }
 }
 

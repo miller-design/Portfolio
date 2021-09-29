@@ -12,7 +12,7 @@ import EventBus from '~/event-bus'
 export default {
   methods: {
     emitMethod() {
-      EventBus.$emit('open_menu')
+      EventBus.$emit('open_panel')
     }
   }
 }

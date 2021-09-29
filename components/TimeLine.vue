@@ -62,6 +62,11 @@ export default {
 	justify-content: flex-end;
 
 	@include grid-col(1, 2);
+
+	@include media(">=medium") {
+
+		@include v-spacing(margin-bottom, 65px, 140px);
+	}
 }
 
 .c-TimeLine__right {
@@ -85,11 +90,11 @@ export default {
 
 .c-TimeLine__dot-wrap {
 	position: sticky;
-  bottom: 100px;
+  bottom: 50vh;
 
-	@include media("<small") {
-		bottom: 80px;
-	}
+	// @include media("<small") {
+	// 	bottom: 50vh;
+	// }
 }
 
 .c-TimeLine__dot {

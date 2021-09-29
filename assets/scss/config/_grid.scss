@@ -1,6 +1,6 @@
 // Grid Mixins
 
-@mixin grid-container($inner: false) {
+@mixin grid-container($inner: false, $col_count: var(--site-cols)) {
 	display: block;
 
 	.ie-11 & {
@@ -14,7 +14,7 @@
 	@supports (display: grid) {
 		display: -ms-grid;
 		display: grid;
-		grid-template-columns: repeat(var(--site-cols), 1fr);
+		grid-template-columns: repeat($col_count, 1fr);
 		column-gap: var(--site-gutter);
 		box-sizing: border-box;
 

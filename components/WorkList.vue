@@ -1,28 +1,36 @@
 <template>
 	<div class="[ c-WorkList ]">
 		<ul class="[ c-WorkList__list ]">
-			<li class="[ c-WorkList__item ]" v-for="(item, i) in Sections" :key="i">
-				<h3 class="[ c-WorkList__header ]" v-if="item.header"><a :href="item.link" :target="item.target" data-cursor-hover>{{item.header}} <span v-if="item.text">({{item.text}})</span></a></h3>
+			<li class="[ c-WorkList__item ]" v-for="(item, i) in Sections" :key="i" @click="emitMethod" :data-index="i" data-cursor-hover>
+				<h3 class="[ c-WorkList__header ]" v-if="item.header">
+					<a :href="item.link" :target="item.target">
+						{{item.header}} <span v-if="item.text">({{item.text}})</span>
+					</a>
+				</h3>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+import EventBus from '~/event-bus'
+
 export default {
-
-	// data() {
-  //   return {
-
-  //   }
-  // },
 
   props: {
 		Sections: []
   },
 
-  methods: {
 
+  methods: {
+    emitMethod(e) {
+			e.preventDefault();
+			const activeListItem = e.target.closest('li')
+			const activeKey = activeListItem.getAttribute("data-index")
+			const activeData = this.$props.Sections[activeKey]
+
+      EventBus.$emit('open_panel', activeData)
+    }
   },
 
 	mounted() {
@@ -59,6 +67,13 @@ export default {
 
 	&:last-child {
 		border-bottom: 1px solid $c-black;
+	}
+
+	@include hover {
+
+		> * {
+			pointer-events: none;
+		}
 	}
 }
 

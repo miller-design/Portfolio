@@ -1,6 +1,8 @@
 <template>
   <footer class="[ c-Footer ]">
+		<Overlay />
 		<SidePanelMenu />
+		<WorkPanel />
 		<div class="[ c-Footer__col ]">
     	<NavBar :class="[ {'c-NavBar--no-switch' : hideSwitch} ]" :addTerms="true" />
 		</div>
@@ -13,6 +15,8 @@
 <script>
 import NavBar from '~/components/NavBar.vue'
 import SidePanelMenu from '~/components/SidePanelMenu.vue'
+import WorkPanel from '~/components/WorkPanel.vue'
+import Overlay from '~/components/Overlay.vue'
 
 export default {
 
@@ -31,7 +35,9 @@ export default {
 
   components: {
 		NavBar,
-		SidePanelMenu
+		SidePanelMenu,
+		WorkPanel,
+		Overlay
   },
 
 	mounted() {
