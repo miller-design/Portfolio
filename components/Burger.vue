@@ -12,7 +12,7 @@ import EventBus from '~/event-bus'
 export default {
   methods: {
     emitMethod() {
-      EventBus.$emit('open_panel')
+      EventBus.$emit('open_menu')
     }
   }
 }
@@ -53,9 +53,14 @@ export default {
     margin-bottom: 6px;
     background-color: $c-black;
 		pointer-events: none;
+    transition: 800ms background-color 400ms $standard-curve;
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    .dark-theme & {
+      background-color: $c-white;
     }
   }
 }

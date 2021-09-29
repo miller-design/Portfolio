@@ -41,12 +41,12 @@ export default {
 
   mounted() {
 
-    EventBus.$on('open_panel', () => {
+    EventBus.$on('open_menu', () => {
       this.menuOpen = true
       disablePageScroll(this.$el)
     })
 
-    EventBus.$on('close_panel', () => {
+    EventBus.$on('close_menu', () => {
       this.menuOpen = false
       enablePageScroll(this.$el)
     })
@@ -55,7 +55,7 @@ export default {
   methods: {
 
     closeMenu() {
-      EventBus.$emit('close_panel')
+      EventBus.$emit('close_menu')
       this.menuOpen = false
     }
   },
@@ -92,7 +92,8 @@ export default {
   justify-content: space-between;
   transition:
 		600ms transform $standard-curve,
-		600ms box-shadow $standard-curve;
+		600ms box-shadow $standard-curve,
+    800ms background-color 400ms $standard-curve;
   transform: translate(100%, 0);
   overflow-y: auto;
 
@@ -117,6 +118,10 @@ export default {
 		}
   }
 
+  .dark-theme & {
+		background-color: $c-black;
+	}
+
 	> div {
 		display: flex;
 		flex-direction: column;
@@ -130,6 +135,11 @@ export default {
 	padding-bottom: var(--site-margin);
 	margin-bottom: var(--site-margin);
 	border-bottom: 2px solid $c-black;
+  transition: 800ms border-color 400ms $standard-curve;
+
+  .dark-theme & {
+		border-color: $c-white;
+	}
 
 	.c-NavBar {
 
@@ -174,8 +184,13 @@ export default {
 	> p {
 		margin-top: 0;
 		margin-bottom: 0;
+    transition: 800ms color 400ms $standard-curve;
 
 		@include P1("light");
+
+    .dark-theme & {
+      color: $c-white;
+    }
 	}
 }
 
