@@ -81,11 +81,27 @@ export default {
     scss: {
       includePaths: ['~/assets/scss']
     },
-    postcss: [
-      require('autoprefixer')({
-        browsers: ['> 5%']
-      })
-    ],
+    postcss: {
+      // Add plugin names as key and arguments as value
+      // Install them before as dependencies with npm or yarn
+      plugins: {
+        // Disable a plugin by passing false as value
+        'postcss-url': false,
+        'autoprefixer': {},
+        'postcss-custom-properties': false
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: true
+        }
+      }
+    },
+    // postcss: [
+    //   require('autoprefixer')({
+    //     overrideBrowserslist: [">0.3%", "not ie 11", "not dead", "not op_mini all"]
+    //   })
+    // ],
     minifyCSS: true,
     minifyJS: false,
     extend (config, ctx) {
