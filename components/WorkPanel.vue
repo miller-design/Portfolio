@@ -1,6 +1,6 @@
 <template>
   <div class="[ c-WorkPanel ]" :class="{ open: panelOpen }">
-    <div>
+    <div ref="scrollArea">
       <div class="[ c-WorkPanel__data ]">
 				<div class="[ c-WorkPanel__header ]">
 					<h2 class="[ c-WorkPanel__title ]"><span ref="title"></span><span>Type: <span ref="subtitle"></span></span></h2>
@@ -50,6 +50,13 @@ export default {
     EventBus.$on('close_panel', () => {
       this.panelOpen = false
       enablePageScroll(this.$el)
+
+			if(this.$refs.scrollArea.scrollTop > 0) {
+
+				setTimeout(() => {
+					this.$refs.scrollArea.scrollTop = 0
+				}, 600)
+			}
     })
   },
 
@@ -78,7 +85,10 @@ export default {
 				tagType = 'Designed & Developed'
 			}
 
-			this.$refs.img.src = img
+			if(img) {
+				this.$refs.img.src = img
+			}
+
 			this.$refs.title.innerHTML = header
 			this.$refs.subtitle.innerHTML = text
 			this.$refs.text.innerHTML = info
@@ -121,7 +131,7 @@ export default {
   transform: translate(100%, 0);
 
   @include media(">=small") {
-    width: 65vw;
+    width: 75vw;
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0);
   }
 

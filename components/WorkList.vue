@@ -53,13 +53,15 @@ export default {
 	padding-left: 0;
 	padding-right: 0;
 	list-style: none;
+
+	@include sibling-fade;
 }
 
 .c-WorkList__item {
+	position: relative;
 	margin-top: 0;
 	margin-bottom: 0;
 	border-top: 1px solid $c-black;
-	transition: 800ms border-color 400ms $standard-curve;
 
 	@include v-spacing(padding-top, 60px, 120px);
 	@include v-spacing(padding-bottom, 60px, 120px);
@@ -67,6 +69,25 @@ export default {
 
 	&:last-child {
 		border-bottom: 1px solid $c-black;
+	}
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background-color: $c-black;
+		transition: 800ms background-color 400ms $standard-curve;
+	}
+
+	&::before {
+		top: -1px;
+	}
+
+	&::after {
+		bottom: -1px;
 	}
 
 	@include hover {
@@ -114,7 +135,11 @@ html.dark-theme {
 	}
 
 	.c-WorkList__item {
-		border-color: $c-white;
+
+		&::before,
+		&::after {
+			background-color: $c-white;
+		}
 	}
 }
 </style>

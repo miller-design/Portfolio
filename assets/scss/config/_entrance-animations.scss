@@ -1,0 +1,18 @@
+.entrance-animation-in-up-delay-300 {
+	opacity: 0;
+	animation: moveInUp 300ms linear 300ms forwards;
+}
+
+
+@keyframes moveInUp {
+
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
