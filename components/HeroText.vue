@@ -2,8 +2,8 @@
 	<div :style="cssVars" class="[ c-HeroText ]" :class="{'c-HeroText--shallow': shallowHeight}">
 		<div class="[ c-HeroText__inner ]">
 			<div class="[ c-HeroText__wrapper ]" ref="textBlock">
-				<h1 class="[ c-HeroText__header ]" v-html="header">{{header}}</h1>
-				<p class="[ c-HeroText__text ][ entrance-animation-in-up-delay-300 ]" v-html="text" v-if="text">{{text}}</p>
+				<h1 class="[ c-HeroText__header ][ entrance-animation-in-up-delay-700 ]" v-html="header">{{header}}</h1>
+				<p class="[ c-HeroText__text ][ entrance-animation-in-up-delay-1200 ]" v-html="text" v-if="text">{{text}}</p>
 			</div>
 		</div>
 	</div>

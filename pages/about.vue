@@ -80,9 +80,6 @@ export default {
       ]
     }
   },
-  computed: {
-
-  },
 
   layout: 'default',
 

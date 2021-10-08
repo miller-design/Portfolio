@@ -1,6 +1,11 @@
-.entrance-animation-in-up-delay-300 {
+.entrance-animation-in-up-delay-700 {
 	opacity: 0;
-	animation: moveInUp 300ms linear 300ms forwards;
+	animation: moveInUp 300ms linear 700ms forwards;
+}
+
+.entrance-animation-in-up-delay-1200 {
+	opacity: 0;
+	animation: moveInUp 300ms linear 1000ms forwards;
 }
 
 

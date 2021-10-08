@@ -41,6 +41,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxtjs/google-fonts',
+    'nuxt-gsap-module'
   ],
 
 /*
@@ -67,6 +68,19 @@ export default {
   googleFonts: {
     families: {
       Roboto: [300, 400, 500, 700],
+    }
+  },
+
+  gsap: {
+    // extraPlugins: {
+    //   scrollTo: true,
+    //   scrollTrigger: true
+    // },
+    extraEases: {
+      expoScaleEase: true
+    },
+    clubPlugins: {
+      morphSVG: true
     }
   },
 
@@ -97,11 +111,6 @@ export default {
         }
       }
     },
-    // postcss: [
-    //   require('autoprefixer')({
-    //     overrideBrowserslist: [">0.3%", "not ie 11", "not dead", "not op_mini all"]
-    //   })
-    // ],
     minifyCSS: true,
     minifyJS: false,
     extend (config, ctx) {
