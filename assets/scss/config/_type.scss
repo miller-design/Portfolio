@@ -7,8 +7,6 @@
 		font-weight: 300;
 	} @else if $weight == 'regular' {
 		font-weight: 400;
-	} @else if $weight == 'medium' {
-		font-weight: 500;
 	} @else if $weight == 'bold' {
 		font-weight: 700;
 	}
