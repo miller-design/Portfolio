@@ -22,7 +22,7 @@ export default {
     return {
       Content: [
         {
-          img: "https://picsum.photos/1200/1800",
+          img: "https://picsum.photos/id/1003/1200/1800",
           header: "Assemblage World",
           text: "Wordpress",
           link: "#",
@@ -31,7 +31,7 @@ export default {
           design: false,
         },
         {
-          img: "https://picsum.photos/1200/1800",
+          img: "https://picsum.photos/id/1011/1200/1800",
           header: "Title",
           text: "Vue.js",
           link: "#",
@@ -40,7 +40,7 @@ export default {
           design: false,
         },
         {
-          img: "https://picsum.photos/1200/1800",
+          img: "https://picsum.photos/id/1015/1200/1200",
           header: "HallX",
           text: "Elleventy",
           link: "#",
@@ -49,7 +49,7 @@ export default {
           design: true,
         },
         {
-          img: "https://picsum.photos/1200/1800",
+          img: "https://picsum.photos/id/1018/1800/1200",
           header: "Function Studio",
           text: "Static",
           link: "#",
@@ -58,7 +58,7 @@ export default {
           design: false,
         },
         {
-          img: "https://picsum.photos/1200/1800",
+          img: "https://picsum.photos/id/1021/1800/1200",
           header: "Steinberg Hart",
           text: "Wordpress",
           link: "#",
@@ -67,7 +67,7 @@ export default {
           design: false,
         },
         {
-          img: "https://picsum.photos/1200/1800",
+          img: "https://picsum.photos/id/1023/1800/1600",
           header: "Correlation Ventures",
           text: "Wordpress",
           link: "#",

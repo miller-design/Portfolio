@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <HeroText header="T&C’s and all the boring Mumbo jumbo 🥱" text="" />
+      <HeroText header="T&C’s and all the boring Mumbo jumbo 🥱" />
     </div>
     <div class="terms-wrapper">
       <div class="terms-content">

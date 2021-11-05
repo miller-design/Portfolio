@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <HeroText header="Got a new project idea? Want help making your idea come to life? Then drop me a line & we can discuss it over coffee. ☕"/>
+      <HeroText v-for="(data, i) in HeroData" :key="i" :header="data.title" :text="data.subTitle" />
     </div>
     <div class="[ contact-wrapper ]">
       <div class="[ l-ContactList ]">
@@ -24,6 +24,30 @@ import HeroText from '~/components/HeroText.vue'
 import SocialList from '~/components/SocialList.vue'
 
 export default {
+
+  async asyncData(context) {
+
+    try {
+      let [contactRes] = await Promise.all([
+        await context.app.$storyapi.get(`cdn/stories/contact`, {
+          cv: context.cv,
+          version: 'draft',
+        })
+      ])
+
+      return {
+        HeroData: contactRes.data.story.content.body.map(resData => {
+          return {
+            title: resData.hero_header,
+            subTitle: resData.hero_sub_header
+          }
+        })
+      }
+    } catch(err) {
+      console.log(err)
+    }
+  },
+
   computed: {
 
   },

@@ -50,10 +50,11 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    // ['storyblok-nuxt', {
-    //   accessToken: process.env.SB_API_KEY,
-    //   cacheProvider: 'memory'
-    // }]
+    '@nuxtjs/markdownit',
+    ['storyblok-nuxt', {
+      accessToken: process.env.SB_API_KEY,
+      cacheProvider: 'memory'
+    }]
   ],
   styleResources: {
     scss: [
@@ -72,6 +73,14 @@ export default {
     clubPlugins: {
       morphSVG: true
     }
+  },
+
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    runtime: true,
+    html: true,
   },
 
   /*
@@ -114,6 +123,6 @@ export default {
     //fallback: 'my-fallback/file.html' // if your hosting needs a custom location
   },
   env: {
-    // SB_API_KEY: process.env.SB_API_KEY
+    SB_API_KEY: process.env.SB_API_KEY
   }
 }

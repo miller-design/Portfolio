@@ -9,12 +9,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/markdownit": "^2.0.0",
     "browserslist": "^4.17.1",
     "core-js": "^3.15.1",
     "gsap": "file:gsap-bonus.tgz",
     "include-media": "^1.4.10",
     "nuxt": "^2.15.7",
-    "scroll-lock": "^2.1.5"
+    "scroll-lock": "^2.1.5",
+    "storyblok-nuxt": "^2.0.1"
   },
   "devDependencies": {
     "@nuxtjs/axios": "^5.13.6",

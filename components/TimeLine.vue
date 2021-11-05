@@ -11,9 +11,7 @@
 				<h2 class="[ c-TimeLine__header ]">{{section.header}}</h2>
 				<ul class="[ c-TimeLine__list ]" :class="{'c-TimeLine__list-vertical': section.verticalList}">
 					<li v-for="(item, i) in section.list" :key="i">
-						<span class="[ orange ]" v-if="item.orange" v-html="item.orange">{{item.orange}}</span>
-						<span class="[ bold ]" v-if="item.bold" v-html="item.bold">{{item.bold}}</span>
-						<span v-if="item.light" v-html="item.light">{{item.light}}</span>
+						<span v-if="item" v-html="$md.render(item)">{{item}}</span>
 					</li>
 				</ul>
 			</div>
@@ -91,10 +89,6 @@ export default {
 .c-TimeLine__dot-wrap {
 	position: sticky;
   bottom: 50vh;
-
-	// @include media("<small") {
-	// 	bottom: 50vh;
-	// }
 }
 
 .c-TimeLine__dot {
@@ -151,29 +145,37 @@ export default {
 			display: block;
 			transition: 800ms color 400ms $standard-curve;
 
-			&.bold,
-			&.orange {
+			> * {
+				margin-top: 0;
+				margin-bottom: 0;
 
 				@include P1;
 			}
 
-			&.bold {
-				text-transform: capitalize;
-			}
-
-			&.orange {
-				color: $c-orange;
+			h3,
+			h4,
+			h5 {
 				text-transform: uppercase;
+				color: $c-orange;
 			}
 
-			&:not(.bold):not(.orange) {
-
-				@include P1("light");
+			strong {
+				text-transform: capitalize;
+				font-weight: initial;
 			}
 
-			&:not(:last-child) {
-				margin-bottom: 5px;
+			em {
+				font-style: normal;
 			}
+
+			// &:not():not(.orange) {
+
+			// 	@include P1("light");
+			// }
+
+			// &:not(:last-child) {
+			// 	margin-bottom: 5px;
+			// }
 		}
 	}
 

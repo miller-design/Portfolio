@@ -1,14 +1,31 @@
 <template>
 	<div class="[ c-WorkList ]">
 		<ul class="[ c-WorkList__list ]">
-			<li class="[ c-WorkList__item ]" v-for="(item, i) in Sections" :key="i" @click="emitMethod" :data-index="i" data-cursor-hover>
+			<li
+				class="[ c-WorkList__item ]"
+				v-for="(item, i) in Sections"
+				:key="i" @click="emitMethod"
+				:data-index="i"
+				data-cursor-hover
+				@mouseenter="hoverEnter"
+				@mousemove="hoverImage"
+				@mouseleave="hoverLeave"
+			>
 				<h3 class="[ c-WorkList__header ]" v-if="item.header">
 					<a :href="item.link" :target="item.target">
 						{{item.header}} <span v-if="item.text">({{item.text}})</span>
 					</a>
 				</h3>
+				<link rel="preload" as="image" :href="item.img">
 			</li>
 		</ul>
+		<img
+			src=""
+			alt="hoverImage"
+			class="[ c-WorkList__hover-img ]"
+			ref="imgEl"
+			transition="fadeIn"
+		>
 	</div>
 </template>
 
@@ -17,21 +34,70 @@ import EventBus from '~/event-bus'
 
 export default {
 
+	data() {
+    return {
+      showImage: false,
+    }
+  },
+
   props: {
 		Sections: []
   },
 
 
   methods: {
-    emitMethod(e) {
-			e.preventDefault();
+		getTheData(e) {
 			const activeListItem = e.target.closest('li')
 			const activeKey = activeListItem.getAttribute("data-index")
 			const activeData = this.$props.Sections[activeKey]
 
+			return activeData
+		},
+
+    emitMethod(e) {
+			e.preventDefault();
+			const activeData = this.getTheData(e)
       EventBus.$emit('open_panel', activeData)
-    }
+    },
+
+		hoverImage(e) {
+			const activeData = this.getTheData(e)
+			const img = activeData.img
+			this.$refs.imgEl.src = img
+			this.followMouse(e)
+		},
+
+		hoverEnter() {
+			this.showImage = true
+			this.imageState()
+		},
+
+		hoverLeave() {
+			this.showImage = false
+			this.imageState()
+		},
+
+		imageState() {
+
+			if(this.showImage) {
+				this.$refs.imgEl.classList.add('active')
+			} else {
+				this.$refs.imgEl.classList.remove('active')
+			}
+		},
+
+		followMouse(e) {
+			let mouseX = e.clientX
+			let mouseY = e.clientY
+
+			let distX = mouseX - (this.$refs.imgEl.offsetWidth / 2)
+			let distY = mouseY - (this.$refs.imgEl.offsetHeight / 2)
+
+			this.$refs.imgEl.style.top = distY + 'px'
+			this.$refs.imgEl.style.left = distX + 'px'
+		}
   },
+
 
 	mounted() {
 
@@ -125,6 +191,24 @@ export default {
 			display: block;
 			margin-top: 5px;
 		}
+	}
+}
+
+.c-WorkList__hover-img {
+	position: fixed;
+	top: 0;
+	left: 0;
+	max-width: 30vw;
+	max-height: 50vh;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	opacity: 0;
+	pointer-events: none;
+	transition: 600ms opacity $standard-curve;
+
+	&.active {
+		opacity: 1;
 	}
 }
 
