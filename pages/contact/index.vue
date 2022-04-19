@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <HeroText v-for="(data, i) in HeroData" :key="i" :header="data.title" :text="data.subTitle" />
+      <HeroText :header="contactData.title" :text="contactData.subTitle" />
     </div>
     <div class="[ contact-wrapper ]">
       <div class="[ l-ContactList ]">
@@ -30,18 +30,17 @@ export default {
     try {
       let [contactRes] = await Promise.all([
         await context.app.$storyapi.get(`cdn/stories/contact`, {
-          cv: context.cv,
-          version: 'draft',
+          // cv: context.cv,
+          cv: + new Date(),
+          version: 'published',
         })
       ])
 
       return {
-        HeroData: contactRes.data.story.content.body.map(resData => {
-          return {
-            title: resData.hero_header,
-            subTitle: resData.hero_sub_header
-          }
-        })
+        contactData: {
+          title: contactRes.data.story.content.hero_header,
+          subTitle: contactRes.data.story.content.hero_sub_header
+        }
       }
     } catch(err) {
       console.log(err)

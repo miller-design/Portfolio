@@ -3,12 +3,13 @@
     <div ref="scrollArea">
       <div class="[ c-WorkPanel__data ]">
 				<div class="[ c-WorkPanel__header ]">
-					<h2 class="[ c-WorkPanel__title ]"><span ref="title"></span><span>Type: <span ref="subtitle"></span></span></h2>
-					<p class="[ c-WorkPanel__tags ]" ref="tags"><span class="design">Designed</span> + <span class="develop">Developed</span></p>
+					<h2 class="[ c-WorkPanel__title ]"><span ref="title"></span></h2>
+					<p class="[ c-WorkPanel__tags ]">Built with: <span class="[  c-WorkPanel__tags ]" ref="subtitle"></span></p>
+					<p class="[ c-WorkPanel__tags ]">Role: <span class="[  c-WorkPanel__tags ]" ref="tags"></span></p>
 				</div>
-				<div class="[ c-WorkPanel__img ]">
+				<!-- <div class="[ c-WorkPanel__img ]">
 					<img alt="project thumbnail" src="https://picsum.photos/1200/1800" ref="img">
-				</div>
+				</div> -->
 				<p class="[ c-WorkPanel__text ]" ref="text"></p>
 				<div class="[ c-WorkPanel__link-wrap ]">
 					<a href="" target="_blank" class="[ c-WorkPanel__link ]" ref="link" data-cursor-hover>View Live Site</a>
@@ -48,6 +49,11 @@ export default {
     })
 
     EventBus.$on('close_panel', () => {
+
+			if(!this.panelOpen) {
+				return
+			}
+
       this.panelOpen = false
       enablePageScroll(this.$el)
 
@@ -78,15 +84,15 @@ export default {
 			let tagType
 
 			if(designed && !developed) {
-				tagType = 'Designed'
+				tagType = 'Designer'
 			} else if(developed && !designed) {
-				tagType = 'Developed'
+				tagType = 'Developer'
 			} else if(developed && designed) {
-				tagType = 'Designed & Developed'
+				tagType = 'Designer & Developer'
 			}
 
 			if(img) {
-				this.$refs.img.src = img
+				// this.$refs.img.src = img
 			}
 
 			this.$refs.title.innerHTML = header
@@ -188,7 +194,7 @@ export default {
 		position: relative;
 
 		@include v-spacing(padding-bottom, 20px, 45px);
-		@include v-spacing(margin-bottom, 40px, 65px);
+		@include v-spacing(margin-bottom, 20px, 45px);
 
 		&::after {
 			content: "";
@@ -232,25 +238,25 @@ export default {
 	}
 
 	.c-WorkPanel__tags {
-		color: $c-orange;
 		margin-top: 0;
 		margin-bottom: 0;
 
 		@include P1;
 		@include v-type(15px, 22px, 22px);
 
-		&.design .develop {
-			text-decoration: line-through;
+		&:first-of-type {
+			margin-bottom: 10px;
 		}
 
-		&.developed .design {
-			text-decoration: line-through;
+		span {
+			color: $c-orange;
 		}
 	}
 
 	.c-WorkPanel__text {
 		padding-right: 8vw;
 		transition: 800ms color 400ms $standard-curve;
+		margin-top: 0;
 
 		@include P1("light");
 

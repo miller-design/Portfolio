@@ -7,25 +7,14 @@
 				:key="i" @click="emitMethod"
 				:data-index="i"
 				data-cursor-hover
-				@mouseenter="hoverEnter"
-				@mousemove="hoverImage"
-				@mouseleave="hoverLeave"
 			>
 				<h3 class="[ c-WorkList__header ]" v-if="item.header">
 					<a :href="item.link" :target="item.target">
 						{{item.header}} <span v-if="item.text">({{item.text}})</span>
 					</a>
 				</h3>
-				<link rel="preload" as="image" :href="item.img">
 			</li>
 		</ul>
-		<img
-			src=""
-			alt="hoverImage"
-			class="[ c-WorkList__hover-img ]"
-			ref="imgEl"
-			transition="fadeIn"
-		>
 	</div>
 </template>
 
@@ -58,44 +47,7 @@ export default {
 			e.preventDefault();
 			const activeData = this.getTheData(e)
       EventBus.$emit('open_panel', activeData)
-    },
-
-		hoverImage(e) {
-			const activeData = this.getTheData(e)
-			const img = activeData.img
-			this.$refs.imgEl.src = img
-			this.followMouse(e)
-		},
-
-		hoverEnter() {
-			this.showImage = true
-			this.imageState()
-		},
-
-		hoverLeave() {
-			this.showImage = false
-			this.imageState()
-		},
-
-		imageState() {
-
-			if(this.showImage) {
-				this.$refs.imgEl.classList.add('active')
-			} else {
-				this.$refs.imgEl.classList.remove('active')
-			}
-		},
-
-		followMouse(e) {
-			let mouseX = e.clientX
-			let mouseY = e.clientY
-
-			let distX = mouseX - (this.$refs.imgEl.offsetWidth / 2)
-			let distY = mouseY - (this.$refs.imgEl.offsetHeight / 2)
-
-			this.$refs.imgEl.style.top = distY + 'px'
-			this.$refs.imgEl.style.left = distX + 'px'
-		}
+    }
   },
 
 

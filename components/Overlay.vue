@@ -1,5 +1,5 @@
 <template>
-  <div class="[ c-Overlay ]" :class="{'is-active' : active}"></div>
+  <div class="[ c-Overlay ]" :class="{'is-active' : active}" @click="panelClick" ></div>
 </template>
 
 <script>
@@ -22,6 +22,13 @@ export default {
     EventBus.$on('close_panel', () => {
       this.active = false
     })
+  },
+
+  methods: {
+
+    panelClick() {
+      EventBus.$emit('close_panel')
+    },
   },
 }
 </script>

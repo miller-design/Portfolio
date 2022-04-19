@@ -96,7 +96,11 @@ export default {
 	width: 100%;
 	margin: 0;
 	text-transform: uppercase;
-	transition: 800ms color 400ms $standard-curve;
+	transition:
+		800ms color 400ms $standard-curve,
+		800ms stroke 400ms $standard-curve;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: $c-black;
 
 	@include H1;
 }
@@ -107,19 +111,18 @@ export default {
 	transition: 800ms color 400ms $standard-curve;
 
 	@include v-spacing(padding-top, 10px, 20px);
-	@include H3('light');
+	@include H3;
 
 	@include media(">=small") {
-		padding-right: 5vw;
-	}
-
-	@include media(">=medium") {
 		padding-right: 10vw;
 	}
 
-	@include media(">=xlarge") {
+	@include media(">=medium") {
+		padding-right: 20vw;
+	}
 
-		padding-right: 15vw;
+	@include media(">=xlarge") {
+		padding-right: 30vw;
 	}
 }
 
@@ -131,6 +134,10 @@ export default {
 }
 
 html.dark-theme {
+
+	.c-HeroText__header {
+-webkit-text-stroke-color: $c-white;
+	}
 
 	.c-HeroText__header,
 	.c-HeroText__text {

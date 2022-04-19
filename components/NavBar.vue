@@ -2,16 +2,16 @@
   <nav class="[ c-NavBar ]">
     <ul class="[ c-NavBar__items ]">
       <li class="[ c-NavBar__item ]">
-        <nuxt-link to="/work" data-cursor-hover>Work</nuxt-link>
+        <nuxt-link to="/work/" data-cursor-hover>Work</nuxt-link>
       </li>
 			<li class="[ c-NavBar__item ]">
-        <nuxt-link to="/about" data-cursor-hover>About</nuxt-link>
+        <nuxt-link to="/about/" data-cursor-hover>About</nuxt-link>
       </li>
 			<li class="[ c-NavBar__item ]">
-        <nuxt-link to="/contact" data-cursor-hover>Contact</nuxt-link>
+        <nuxt-link to="/contact/" data-cursor-hover>Contact</nuxt-link>
       </li>
       <li class="[ c-NavBar__item ]" v-if="addTerms">
-        <nuxt-link to="/terms-and-conditions" data-cursor-hover>T&C's</nuxt-link>
+        <nuxt-link to="/terms-and-conditions/" data-cursor-hover>T&C's</nuxt-link>
       </li>
       <li class="[ c-NavBar__item c-NavBar__switch ]">
         <DarkModeSwitch />
