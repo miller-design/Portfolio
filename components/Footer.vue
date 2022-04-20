@@ -7,7 +7,7 @@
     	<NavBar :class="[ {'c-NavBar--no-switch' : hideSwitch} ]" :addTerms="true" />
 		</div>
 		<div class="[ c-Footer__col ]">
-			<p class="[ c-Footer__copyrite ]">© {{year}} Copyright Jack Miller Design</p>
+			<p class="[ c-Footer__copyrite ]">© {{year}} Copyright Jack Miller</p>
 		</div>
   </footer>
 </template>
