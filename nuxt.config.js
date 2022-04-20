@@ -66,15 +66,6 @@ export default {
     ]
   },
 
-  gsap: {
-    extraEases: {
-      expoScaleEase: true
-    },
-    clubPlugins: {
-      morphSVG: true
-    }
-  },
-
   markdownit: {
     preset: 'default',
     linkify: true,
